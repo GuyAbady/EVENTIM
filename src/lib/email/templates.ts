@@ -17,6 +17,10 @@ type Strings = {
   calendar: string;
   gift: string;
   footer: string;
+  inviteSubject: (event: string) => string;
+  inviteIntro: (event: string) => string;
+  inviteButton: string;
+  inviteFooter: string;
 };
 
 const STRINGS: Record<EmailLocale, Strings> = {
@@ -32,6 +36,10 @@ const STRINGS: Record<EmailLocale, Strings> = {
     calendar: "הוספה ליומן Google",
     gift: "למתנה",
     footer: "קיבלת את המייל הזה כי נרשמת לאירוע דרך דף ההזמנה.",
+    inviteSubject: (event) => `הזמנה: ${event}`,
+    inviteIntro: (event) => `אנחנו שמחים להזמין אותך לאירוע "${event}".`,
+    inviteButton: "לאישור הגעה",
+    inviteFooter: "קיבלת את המייל הזה כי מארגני האירוע הוסיפו אותך לרשימת המוזמנים.",
   },
   en: {
     subject: (event) => `Reminder: ${event}`,
@@ -45,6 +53,10 @@ const STRINGS: Record<EmailLocale, Strings> = {
     calendar: "Add to Google Calendar",
     gift: "Gift",
     footer: "You received this email because you registered through the invitation page.",
+    inviteSubject: (event) => `Invitation: ${event}`,
+    inviteIntro: (event) => `You are invited to "${event}".`,
+    inviteButton: "RSVP",
+    inviteFooter: "You received this email because the organizers added you to the guest list.",
   },
 };
 
@@ -67,10 +79,24 @@ export type ReminderInput = {
   guestCount: number;
   invitationUrl: string;
   locale: EmailLocale;
+  // "invitation" = first contact before registering (stage 7). Default: reminder.
+  kind?: "reminder" | "invitation";
+  // Custom opening paragraph written by the business (invitations only).
+  message?: string | null;
 };
 
-export function buildReminderEmail({ event, recipientName, guestCount, invitationUrl, locale }: ReminderInput) {
-  const s = STRINGS[locale];
+export function buildReminderEmail({ event, recipientName, guestCount, invitationUrl, locale, kind = "reminder", message }: ReminderInput) {
+  const base = STRINGS[locale];
+  const isInvite = kind === "invitation";
+  const s: Strings = isInvite
+    ? {
+        ...base,
+        subject: base.inviteSubject,
+        intro: (title) => message?.trim() || base.inviteIntro(title),
+        openInvitation: base.inviteButton,
+        footer: base.inviteFooter,
+      }
+    : base;
   const dir = locale === "he" ? "rtl" : "ltr";
   const align = locale === "he" ? "right" : "left";
   const labelPad = locale === "he" ? "2px 0 2px 12px" : "2px 12px 2px 0";
@@ -102,14 +128,14 @@ ${event.media_url ? `<tr><td><img src="${escapeHtml(event.media_url)}" alt="" wi
 <tr><td style="padding:28px 28px 8px;text-align:${align};" dir="${dir}">
   <div style="height:4px;width:48px;background:${accent};border-radius:2px;margin-bottom:16px;"></div>
   <p style="margin:0 0 8px;font-size:16px;">${escapeHtml(s.greeting(recipientName))}</p>
-  <p style="margin:0 0 16px;font-size:16px;line-height:1.6;">${escapeHtml(s.intro(event.title))}</p>
+  <p style="margin:0 0 16px;font-size:16px;line-height:1.6;white-space:pre-line;">${escapeHtml(s.intro(event.title))}</p>
   <h1 style="margin:0 0 16px;font-size:26px;line-height:1.3;">${escapeHtml(event.title)}</h1>
 </td></tr>
 <tr><td style="padding:0 28px;" dir="${dir}">
   <table role="presentation" cellspacing="0" cellpadding="0" dir="${dir}" style="font-size:15px;line-height:1.6;">
     <tr><td style="color:#78716c;padding:${labelPad};" align="${align}">${s.when}</td><td align="${align}">${escapeHtml(when)}</td></tr>
     ${where ? `<tr><td style="color:#78716c;padding:${labelPad};" align="${align}">${s.where}</td><td align="${align}">${escapeHtml(where)}</td></tr>` : ""}
-    <tr><td colspan="2" align="${align}" style="color:#78716c;padding-top:6px;">${escapeHtml(s.guests(guestCount))}</td></tr>
+    ${isInvite ? "" : `<tr><td colspan="2" align="${align}" style="color:#78716c;padding-top:6px;">${escapeHtml(s.guests(guestCount))}</td></tr>`}
   </table>
 </td></tr>
 <tr><td style="padding:20px 24px 8px;" align="center">
@@ -132,7 +158,7 @@ ${event.media_url ? `<tr><td><img src="${escapeHtml(event.media_url)}" alt="" wi
     "",
     `${s.when}: ${when}`,
     where ? `${s.where}: ${where}` : null,
-    s.guests(guestCount),
+    isInvite ? null : s.guests(guestCount),
     "",
     `${s.openInvitation}: ${invitationUrl}`,
     waze ? `${s.navigate}: ${waze}` : null,

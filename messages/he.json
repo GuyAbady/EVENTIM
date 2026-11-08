@@ -338,5 +338,59 @@
     "exportColumn": "שולחן",
     "backToEvent": "חזרה לאירוע",
     "print": "הדפסה"
+  },
+  "invitations": {
+    "title": "שליחת הזמנות",
+    "link": "שליחת הזמנות",
+    "backToEvent": "חזרה לאירוע",
+    "defaultMessage": "שלום {name}, אנחנו שמחים להזמין אותך לאירוע \"{event}\" ב{date} בשעה {time}{venue}. לפרטים ואישור הגעה: {link}",
+    "previewName": "ישראל ישראלי",
+    "messageTitle": "נוסח ההזמנה",
+    "messageHelp": "הנוסח משמש ל-SMS ולוואטסאפ, ובאימייל הוא הפסקה הפותחת. אפשר להשתמש בשדות:",
+    "saveMessage": "שמירת הנוסח",
+    "resetMessage": "חזרה לנוסח ברירת המחדל",
+    "messageSaved": "הנוסח נשמר",
+    "preview": "תצוגה מקדימה (כפי שתישלח)",
+    "smsCounter": "{chars} תווים, {segments} הודעות SMS",
+    "smsUnicode": "טקסט בעברית נשלח בקידוד Unicode: עד 70 תווים להודעה (67 כשההודעה מפוצלת). כל הודעה מחויבת בנפרד",
+    "addTitle": "הוספת מוזמנים",
+    "addHelp": "מוזמן אחד בכל שורה: שם, טלפון, אימייל (בכל סדר, מופרדים בפסיק או בטאב). אפשר להדביק עמודות ישירות מ-Excel. חובה טלפון או אימייל.",
+    "addPlaceholder": "דנה כהן, 050-1234567, dana@example.com\nיוסי לוי, 052-7654321",
+    "addButton": "הוספה לרשימה",
+    "addResult": "נוספו {added}. כפולים שדולגו: {duplicates}. שורות לא תקינות: {invalid}",
+    "stats": {
+      "total": "מוזמנים",
+      "registered": "נרשמו",
+      "withEmail": "עם אימייל",
+      "withPhone": "עם טלפון"
+    },
+    "bulkEmail": "שליחת אימייל לכל מי שטרם קיבל ({count})",
+    "bulkSms": "שליחת SMS לכל מי שטרם קיבל ({count})",
+    "bulkEmailConfirm": "לשלוח עכשיו הזמנה באימייל ל-{count} מוזמנים?",
+    "bulkSmsConfirm": "לשלוח עכשיו הזמנה ב-SMS ל-{count} מוזמנים? שליחת SMS כרוכה בעלות.",
+    "bulkNote": "כל לחיצה שולחת עד 40 הודעות. מי שכבר נרשם או כבר קיבל הזמנה בערוץ הזה לא יקבל שוב. וואטסאפ נשלח ידנית מכל שורה.",
+    "bulkResult": "נשלחו {sent}, נכשלו {failed}. נותרו {remaining} (לחצו שוב להמשך)",
+    "failed": "השליחה נכשלה: {error}",
+    "emailNotConfigured": "אימייל לא מוגדר (GMAIL_USER, GMAIL_APP_PASSWORD).",
+    "smsNotConfigured": "SMS לא מוגדר (TWILIO_*), ולכן הודעות SMS לא יישלחו בפועל.",
+    "empty": "עדיין אין מוזמנים. הוסיפו רשימה למעלה.",
+    "columns": {
+      "name": "שם",
+      "phone": "טלפון",
+      "email": "אימייל",
+      "status": "סטטוס",
+      "actions": "שליחה"
+    },
+    "registered": "נרשם/ה",
+    "notRegistered": "טרם נרשם/ה",
+    "channels": {
+      "email": "אימייל",
+      "sms": "SMS",
+      "whatsapp": "וואטסאפ"
+    },
+    "sendFailed": "נכשל",
+    "sending": "שולח...",
+    "delete": "מחיקה",
+    "deleteConfirm": "למחוק את {name} מרשימת המוזמנים?"
   }
 }

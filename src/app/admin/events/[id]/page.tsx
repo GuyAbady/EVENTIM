@@ -100,6 +100,9 @@ export default async function EventDetailPage({ params }: { params: Promise<{ id
           </p>
         </div>
         <div className="flex flex-wrap gap-2">
+          <Link href={`/admin/events/${id}/invitations`} className={buttonLinkClass("primary")}>
+            {t("invitations.link")}
+          </Link>
           <Link href={`/admin/events/${id}/tables`} className={buttonLinkClass("secondary")}>
             {t("tables.link")}
           </Link>

@@ -23,14 +23,16 @@ export type EventRow = {
   reminder_sent_at: string | null;
   rsvp_deadline: string | null;
   max_guests: number | null;
+  invitation_message: string | null;
   is_active: boolean;
   created_by: string | null;
   created_at: string;
   updated_at: string;
 };
 
-export type EventInsert = Omit<EventRow, "id" | "created_at" | "updated_at" | "reminder_sent_at"> & {
+export type EventInsert = Omit<EventRow, "id" | "created_at" | "updated_at" | "reminder_sent_at" | "invitation_message"> & {
   id?: string;
+  invitation_message?: string | null;
 };
 export type EventUpdate = Partial<EventInsert & { reminder_sent_at: string | null }>;
 
@@ -74,6 +76,31 @@ export type EmailLogRow = {
   subject: string;
   status: EmailStatus;
   error: string | null;
+  sent_by: string | null;
+  created_at: string;
+};
+
+export type Channel = "email" | "sms" | "whatsapp";
+
+export type InviteeRow = {
+  id: string;
+  event_id: string;
+  full_name: string;
+  phone: string | null;
+  email: string | null;
+  created_at: string;
+  updated_at: string;
+};
+
+export type InvitationLogRow = {
+  id: string;
+  event_id: string;
+  invitee_id: string | null;
+  channel: Channel;
+  to_address: string;
+  status: EmailStatus;
+  error: string | null;
+  provider_id: string | null;
   sent_by: string | null;
   created_at: string;
 };
@@ -122,6 +149,18 @@ export type Database = {
         Update: Partial<Omit<EmailLogRow, "id" | "created_at">>;
         Relationships: [];
       };
+      inv_invitees: {
+        Row: InviteeRow;
+        Insert: Omit<InviteeRow, "id" | "created_at" | "updated_at"> & { id?: string };
+        Update: Partial<Omit<InviteeRow, "id" | "created_at" | "updated_at">>;
+        Relationships: [];
+      };
+      inv_invitation_log: {
+        Row: InvitationLogRow;
+        Insert: Omit<InvitationLogRow, "id" | "created_at"> & { id?: string };
+        Update: Partial<Omit<InvitationLogRow, "id" | "created_at">>;
+        Relationships: [];
+      };
       inv_staff: {
         Row: StaffRow;
         Insert: Omit<StaffRow, "created_at">;
@@ -147,6 +186,7 @@ export type Database = {
       };
     };
     Enums: {
+      inv_channel: Channel;
       inv_email_kind: EmailKind;
       inv_email_status: EmailStatus;
       inv_event_type: EventType;
