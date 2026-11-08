@@ -15,14 +15,10 @@
     "en": "English"
   },
   "home": {
-    "title": "ברוכים הבאים",
-    "setupDone": "התשתית מוכנה. השלב הבא: ניהול אירועים.",
-    "checks": {
-      "nextjs": "Next.js ו-Tailwind",
-      "i18n": "עברית ואנגלית עם כיווניות אוטומטית",
-      "supabase": "חיבור ל-Supabase",
-      "supabaseMissing": "חיבור ל-Supabase: חסרים משתני סביבה"
-    }
+    "title": "הזמנות דיגיטליות לאירועים",
+    "play": "הפעלת הסרטון",
+    "videoTitle": "סרטון היכרות עם EVENTIM",
+    "enter": "כניסה למערכת"
   },
   "common": {
     "loading": "טוען...",

@@ -15,14 +15,10 @@
     "en": "English"
   },
   "home": {
-    "title": "Welcome",
-    "setupDone": "The foundation is ready. Next step: event management.",
-    "checks": {
-      "nextjs": "Next.js and Tailwind",
-      "i18n": "Hebrew and English with automatic direction",
-      "supabase": "Supabase connection",
-      "supabaseMissing": "Supabase connection: environment variables missing"
-    }
+    "title": "Digital invitations for events",
+    "play": "Play the video",
+    "videoTitle": "EVENTIM introduction video",
+    "enter": "Sign in"
   },
   "common": {
     "loading": "Loading...",
