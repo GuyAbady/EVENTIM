@@ -105,8 +105,8 @@ export function RegistrationsPanel({ eventId, rows }: { eventId: string; rows: R
                     )}
                     <div className="text-xs text-muted">{r.createdAtDisplay} · {t(`source.${r.source}`)}</div>
                   </td>
-                  <td className="py-3 pe-3 whitespace-nowrap" dir="ltr">{r.phoneDisplay}</td>
-                  <td className="py-3 pe-3 break-all" dir="ltr">{r.email ?? <span className="text-muted">—</span>}</td>
+                  <td className="py-3 pe-3 whitespace-nowrap"><span dir="ltr">{r.phoneDisplay}</span></td>
+                  <td className="py-3 pe-3 break-all">{r.email ? <span dir="ltr" className="inline-block text-start">{r.email}</span> : <span className="text-muted">—</span>}</td>
                   <td className="py-3 pe-3 text-center tabular-nums">{r.guest_count}</td>
                   <td className="py-3 pe-3 max-w-56 whitespace-pre-line text-muted">{r.notes ?? ""}</td>
                   <td className="py-3 pe-3 whitespace-nowrap">
