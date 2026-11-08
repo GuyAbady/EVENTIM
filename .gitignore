@@ -42,3 +42,6 @@ next-env.d.ts
 test-results/
 playwright-report/
 !.env.example
+
+# /brag-slim output
+brag-output*/
