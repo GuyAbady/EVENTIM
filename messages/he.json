@@ -194,7 +194,12 @@
     },
     "notFoundTitle": "ההזמנה לא נמצאה",
     "notFoundBody": "הקישור שגוי או שהאירוע כבר לא פעיל.",
-    "shareSiteName": "הזמנה דיגיטלית"
+    "shareSiteName": "הזמנה דיגיטלית",
+    "video": {
+      "madeWith": "ההזמנה נוצרה ב-EVENTIM",
+      "play": "הפעלת הסרטון",
+      "title": "סרטון היכרות עם EVENTIM"
+    }
   },
   "registrations": {
     "title": "נרשמים",
