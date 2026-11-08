@@ -210,8 +210,8 @@ export function InvitationsPanel({
                 {invitees.map((i) => (
                   <tr key={i.id} className="border-b border-border/60 align-top">
                     <td className="py-3 pe-3 font-medium">{i.full_name}</td>
-                    <td className="py-3 pe-3 whitespace-nowrap" dir="ltr">{i.phoneDisplay ?? <span className="text-muted">—</span>}</td>
-                    <td className="py-3 pe-3 break-all" dir="ltr">{i.email ?? <span className="text-muted">—</span>}</td>
+                    <td className="py-3 pe-3 whitespace-nowrap">{i.phoneDisplay ? <span dir="ltr">{i.phoneDisplay}</span> : <span className="text-muted">—</span>}</td>
+                    <td className="py-3 pe-3 break-all">{i.email ? <span dir="ltr" className="inline-block text-start">{i.email}</span> : <span className="text-muted">—</span>}</td>
                     <td className="py-3 pe-3">
                       <div className="flex flex-col gap-1">
                         {i.registered ? (
