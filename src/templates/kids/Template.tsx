@@ -1,10 +1,7 @@
-import { Rubik } from "next/font/google";
 import { getTranslations } from "next-intl/server";
 import { Countdown } from "../blocks/Countdown";
 import { ActionLinks, DateLine, VenueLine } from "../blocks/EventInfo";
 import type { TemplateProps } from "../types";
-
-const rubik = Rubik({ subsets: ["hebrew", "latin"], weight: ["400", "600", "800"], display: "swap" });
 
 const DOTS = ["#ff7a59", "#ffd166", "#06d6a0", "#118ab2", "#ef476f", "#8338ec"];
 
@@ -14,7 +11,7 @@ export default async function KidsTemplate({ event, locale, links, rsvp }: Templ
   const accent = event.primary_color ?? "#ff7a59";
 
   return (
-    <div className={`${rubik.className} relative min-h-full overflow-hidden bg-[#fff9e6] text-[#2a2a2a]`}>
+    <div className={`relative min-h-full overflow-hidden bg-[#fff9e6] text-[#2a2a2a]`}>
       <svg aria-hidden className="pointer-events-none absolute inset-0 h-full w-full opacity-70">
         {Array.from({ length: 36 }, (_, i) => (
           <circle key={i} cx={`${(i * 37) % 100}%`} cy={`${(i * 53) % 100}%`} r={4 + (i % 4) * 2} fill={DOTS[i % DOTS.length]} />

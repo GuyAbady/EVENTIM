@@ -1,10 +1,7 @@
-import { Frank_Ruhl_Libre } from "next/font/google";
 import { getTranslations } from "next-intl/server";
 import { Countdown } from "../blocks/Countdown";
 import { ActionLinks, DateLine, VenueLine } from "../blocks/EventInfo";
 import type { TemplateProps } from "../types";
-
-const serif = Frank_Ruhl_Libre({ subsets: ["hebrew", "latin"], weight: ["400", "500", "700"], display: "swap" });
 
 // Gold: black ground, double gold frame, serif, formal.
 export default async function GoldTemplate({ event, locale, links, rsvp }: TemplateProps) {
@@ -12,7 +9,7 @@ export default async function GoldTemplate({ event, locale, links, rsvp }: Templ
   const accent = event.primary_color ?? "#d4af37";
 
   return (
-    <div className={`${serif.className} min-h-full bg-[#141210] text-[#f6efe0]`}>
+    <div className={`min-h-full bg-[#141210] text-[#f6efe0]`}>
       <div className="mx-auto w-full max-w-xl px-3 py-6 sm:py-12">
         <div className="rounded-sm border p-1.5" style={{ borderColor: accent }}>
           <div className="flex flex-col gap-10 rounded-sm border px-5 py-12 sm:px-10 sm:py-16" style={{ borderColor: `${accent}99` }}>

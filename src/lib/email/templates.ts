@@ -120,7 +120,7 @@ export function buildReminderEmail({ event, recipientName, guestCount, invitatio
 <meta name="viewport" content="width=device-width">
 <title>${escapeHtml(subject)}</title>
 </head>
-<body dir="${dir}" style="margin:0;padding:0;background:#f6f6f4;font-family:Heebo,Arial,Helvetica,sans-serif;color:#1c1917;">
+<body dir="${dir}" style="margin:0;padding:0;background:#f6f6f4;font-family:Arial,Helvetica,sans-serif;color:#1c1917;">
 <table role="presentation" width="100%" cellspacing="0" cellpadding="0" dir="${dir}" style="background:#f6f6f4;padding:24px 12px;">
 <tr><td align="center">
 <table role="presentation" width="100%" cellspacing="0" cellpadding="0" dir="${dir}" style="max-width:560px;background:#ffffff;border-radius:16px;overflow:hidden;">

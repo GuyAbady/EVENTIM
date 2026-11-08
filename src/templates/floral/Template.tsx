@@ -1,10 +1,7 @@
-import { Frank_Ruhl_Libre } from "next/font/google";
 import { getTranslations } from "next-intl/server";
 import { Countdown } from "../blocks/Countdown";
 import { ActionLinks, DateLine, VenueLine } from "../blocks/EventInfo";
 import type { TemplateProps } from "../types";
-
-const serif = Frank_Ruhl_Libre({ subsets: ["hebrew", "latin"], weight: ["400", "500", "700"], display: "swap" });
 
 function Petals({ color, className }: { color: string; className: string }) {
   return (
@@ -29,7 +26,7 @@ export default async function FloralTemplate({ event, locale, links, rsvp }: Tem
   const accent = event.primary_color ?? "#c4506b";
 
   return (
-    <div className={`${serif.className} relative min-h-full overflow-hidden bg-[#fff5f6] text-[#4a2b33]`}>
+    <div className={`relative min-h-full overflow-hidden bg-[#fff5f6] text-[#4a2b33]`}>
       <Petals color={accent} className="pointer-events-none absolute -start-16 -top-16 w-48 sm:-start-8 sm:-top-8 sm:w-72" />
       <Petals color={accent} className="pointer-events-none absolute -bottom-16 -end-16 w-48 rotate-180 sm:-bottom-10 sm:-end-10 sm:w-72" />
       <div className="relative mx-auto flex w-full max-w-xl flex-col gap-10 px-4 py-14 sm:py-20">

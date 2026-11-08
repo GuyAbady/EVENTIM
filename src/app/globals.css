@@ -19,7 +19,10 @@
   --color-border: var(--border);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
-  --font-sans: var(--font-sans), system-ui, sans-serif;
+  /* Arial everywhere. Fallbacks: Liberation Sans (metric-compatible), Arial Hebrew (Apple). */
+  --font-sans: Arial, "Liberation Sans", "Arial Hebrew", Helvetica, sans-serif;
+  --font-serif: var(--font-sans);
+  --font-mono: var(--font-sans);
 }
 
 html {
@@ -28,7 +31,7 @@ html {
 }
 
 body {
-  font-family: var(--font-sans);
+  font-family: Arial, "Liberation Sans", "Arial Hebrew", Helvetica, sans-serif;
   line-height: 1.6;
   -webkit-tap-highlight-color: transparent;
 }

@@ -41,18 +41,15 @@ Physical properties (`left`, `right`, `ml-`, `pl-`, `text-left`) break in one of
 
 ## 3. Fonts
 
-- Hebrew needs a font with real Hebrew glyphs. Fallback to a Latin font produces mismatched weights and bad line heights.
-- Use `next/font/google` with a font that ships both scripts. Good choices: **Heebo** (clean, modern, default pick), **Assistant** (friendly, lighter), **Rubik** (rounded), **Frank Ruhl Libre** (serif, formal invitations), **David Libre** (classic serif).
-- Load with `subsets: ["hebrew", "latin"]`. Missing the `hebrew` subset is the most common cause of "the font did not apply".
-
-```tsx
-import { Heebo } from "next/font/google";
-const heebo = Heebo({ subsets: ["hebrew", "latin"], variable: "--font-sans" });
-```
+- **Project decision: Arial only, everywhere** (admin, invitation templates, emails, share images). Do not add `next/font` or other font families.
+- The stack lives in `src/app/globals.css`: `Arial, "Liberation Sans", "Arial Hebrew", Helvetica, sans-serif`. `font-serif` and `font-mono` map to the same stack.
+- Arial is not installed on Android or Linux; there the browser uses Liberation Sans (if present) or the system sans-serif. That is expected.
+- Share images (`src/lib/og/render.tsx`) need font files, and Arial cannot be bundled under Microsoft's licence, so they use the bundled `LiberationSans-*.ttf` (OFL, metric-compatible with Arial, includes Hebrew).
+- Arial has only regular (400) and bold (700). `font-light` and `font-medium` render as regular, `font-black` as bold.
 
 - Hebrew has no italics and no uppercase. Never use `italic` or `uppercase` on Hebrew text. For emphasis use weight or color. `letter-spacing` on Hebrew should stay at 0; tracking looks broken on Hebrew letters.
 - Hebrew text usually needs `line-height` 1.5 to 1.7 at body size, slightly more than Latin.
-- For invitation templates, pick one display font for the title and one body font, both with Hebrew support. Verify every template in both languages before adding it to the registry.
+- Templates differ by color, layout and weight, not by font. Verify every template in both languages before adding it to the registry.
 
 ## 4. Mixed-direction text: the real source of bugs
 

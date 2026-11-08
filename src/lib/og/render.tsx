@@ -16,17 +16,15 @@ const size = OG_SIZE;
 
 const FONT_DIR = path.join(process.cwd(), "src/assets/fonts");
 
+// Satori needs real font files, and Arial cannot be bundled (Microsoft licence).
+// Liberation Sans is the metric-compatible, OFL-licensed stand-in, with Hebrew.
 async function loadFonts() {
-  const [he400, he700, la400, la700] = await Promise.all(
-    ["heebo-hebrew-400-normal", "heebo-hebrew-700-normal", "heebo-latin-400-normal", "heebo-latin-700-normal"].map((f) =>
-      readFile(path.join(FONT_DIR, `${f}.woff`)),
-    ),
+  const [regular, bold] = await Promise.all(
+    ["LiberationSans-Regular", "LiberationSans-Bold"].map((f) => readFile(path.join(FONT_DIR, `${f}.ttf`))),
   );
   return [
-    { name: "Heebo", data: he400, weight: 400 as const, style: "normal" as const },
-    { name: "Heebo", data: he700, weight: 700 as const, style: "normal" as const },
-    { name: "Heebo", data: la400, weight: 400 as const, style: "normal" as const },
-    { name: "Heebo", data: la700, weight: 700 as const, style: "normal" as const },
+    { name: "Arial", data: regular, weight: 400 as const, style: "normal" as const },
+    { name: "Arial", data: bold, weight: 700 as const, style: "normal" as const },
   ];
 }
 
@@ -81,7 +79,7 @@ export async function renderShareImage(slug: string): Promise<Buffer | null> {
           position: "relative",
           background: bg,
           color: fg,
-          fontFamily: "Heebo",
+          fontFamily: "Arial",
         }}
       >
         {background && (

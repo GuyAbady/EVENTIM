@@ -1,16 +1,9 @@
 import type { Metadata } from "next";
-import { Heebo } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getTranslations } from "next-intl/server";
 import { getDirection, type Locale } from "@/i18n/config";
 import { getSiteUrl } from "@/lib/site";
 import "./globals.css";
-
-const heebo = Heebo({
-  subsets: ["hebrew", "latin"],
-  variable: "--font-sans",
-  display: "swap",
-});
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("app");
@@ -26,7 +19,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   const dir = getDirection(locale);
 
   return (
-    <html lang={locale} dir={dir} className={`${heebo.variable} h-full antialiased`}>
+    <html lang={locale} dir={dir} className="h-full antialiased">
       <body className="min-h-full flex flex-col bg-background text-foreground">
         <NextIntlClientProvider>{children}</NextIntlClientProvider>
       </body>
