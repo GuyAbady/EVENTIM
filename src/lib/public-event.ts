@@ -19,6 +19,7 @@ export type PublicEvent = {
   rsvp_deadline: string | null;
   max_guests: number | null;
   updated_at: string | null;
+  show_launch_video?: boolean;
   confirmed_guests: number;
 };
 

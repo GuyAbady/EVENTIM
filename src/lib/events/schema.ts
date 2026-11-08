@@ -58,6 +58,7 @@ export const eventFormSchema = z.object({
     .optional(),
   max_guests: optionalNumber(1, 100000),
   is_active: z.boolean(),
+  show_launch_video: z.boolean(),
 });
 
 export type EventFormInput = z.input<typeof eventFormSchema>;
@@ -83,6 +84,7 @@ export function parseEventForm(formData: FormData) {
     rsvp_deadline_local: formData.get("rsvp_deadline_local") ?? "",
     max_guests: formData.get("max_guests") ?? "",
     is_active: formData.get("is_active") === "on",
+    show_launch_video: formData.get("show_launch_video") === "on",
   };
   const result = eventFormSchema.safeParse(raw);
   if (result.success) return { values: result.data, errors: null };

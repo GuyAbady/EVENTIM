@@ -119,7 +119,9 @@
       "invalidColor": "צבע לא תקין",
       "invalidDate": "תאריך לא תקין",
       "saveFailed": "השמירה נכשלה. נסה שוב."
-    }
+    },
+    "showLaunchVideo": "הצגת סרטון EVENTIM בתחתית דף ההזמנה",
+    "showLaunchVideoHelp": "מתחת לטופס אישור ההגעה, עם כפתור הפעלה. כבוי כברירת מחדל."
   },
   "templates": {
     "names": {

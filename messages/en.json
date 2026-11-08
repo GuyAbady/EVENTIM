@@ -119,7 +119,9 @@
       "invalidColor": "Invalid color",
       "invalidDate": "Invalid date",
       "saveFailed": "Saving failed. Try again."
-    }
+    },
+    "showLaunchVideo": "Show the EVENTIM video at the bottom of the invitation",
+    "showLaunchVideoHelp": "Below the RSVP form, behind a play button. Off by default."
   },
   "templates": {
     "names": {
