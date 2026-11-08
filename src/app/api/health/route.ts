@@ -1,6 +1,7 @@
 import { createClient } from "@/lib/supabase/server";
 import { createTransport, hasEmailEnv } from "@/lib/email/transport";
 import { getSiteUrl } from "@/lib/site";
+import { hasSmsEnv } from "@/lib/sms/send";
 
 export const dynamic = "force-dynamic";
 
@@ -12,6 +13,7 @@ export async function GET() {
     siteUrl: getSiteUrl(),
     supabaseSecretKey: Boolean(process.env.SUPABASE_SECRET_KEY),
     cronSecret: Boolean(process.env.CRON_SECRET),
+    sms: hasSmsEnv() ? "configured" : "missing",
   };
 
   if (process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY) {

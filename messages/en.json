@@ -338,5 +338,59 @@
     "exportColumn": "Table",
     "backToEvent": "Back to event",
     "print": "Print"
+  },
+  "invitations": {
+    "title": "Send invitations",
+    "link": "Send invitations",
+    "backToEvent": "Back to event",
+    "defaultMessage": "Hi {name}, you are invited to \"{event}\" on {date} at {time}{venue}. Details and RSVP: {link}",
+    "previewName": "Jane Doe",
+    "messageTitle": "Invitation text",
+    "messageHelp": "Used for SMS and WhatsApp, and as the opening paragraph of the email. Available fields:",
+    "saveMessage": "Save text",
+    "resetMessage": "Reset to default",
+    "messageSaved": "Text saved",
+    "preview": "Preview (as it will be sent)",
+    "smsCounter": "{chars} characters, {segments} SMS segments",
+    "smsUnicode": "Non-Latin text is sent as Unicode: up to 70 characters per SMS (67 when split). Each segment is billed",
+    "addTitle": "Add invitees",
+    "addHelp": "One guest per line: name, phone, email (any order, separated by comma or tab). You can paste columns straight from Excel. Phone or email is required.",
+    "addPlaceholder": "Dana Cohen, 050-1234567, dana@example.com\nYossi Levi, 052-7654321",
+    "addButton": "Add to list",
+    "addResult": "Added {added}. Duplicates skipped: {duplicates}. Invalid lines: {invalid}",
+    "stats": {
+      "total": "Invitees",
+      "registered": "Registered",
+      "withEmail": "With email",
+      "withPhone": "With phone"
+    },
+    "bulkEmail": "Email everyone not yet sent ({count})",
+    "bulkSms": "SMS everyone not yet sent ({count})",
+    "bulkEmailConfirm": "Send the invitation by email to {count} invitees now?",
+    "bulkSmsConfirm": "Send the invitation by SMS to {count} invitees now? SMS costs money.",
+    "bulkNote": "Each click sends up to 40 messages. Anyone already registered or already sent on this channel is skipped. WhatsApp is sent manually from each row.",
+    "bulkResult": "Sent {sent}, failed {failed}. {remaining} left (click again to continue)",
+    "failed": "Sending failed: {error}",
+    "emailNotConfigured": "Email is not configured (GMAIL_USER, GMAIL_APP_PASSWORD).",
+    "smsNotConfigured": "SMS is not configured (TWILIO_*), so SMS will not actually be sent.",
+    "empty": "No invitees yet. Add a list above.",
+    "columns": {
+      "name": "Name",
+      "phone": "Phone",
+      "email": "Email",
+      "status": "Status",
+      "actions": "Send"
+    },
+    "registered": "Registered",
+    "notRegistered": "Not registered",
+    "channels": {
+      "email": "Email",
+      "sms": "SMS",
+      "whatsapp": "WhatsApp"
+    },
+    "sendFailed": "failed",
+    "sending": "Sending...",
+    "delete": "Delete",
+    "deleteConfirm": "Remove {name} from the guest list?"
   }
 }
