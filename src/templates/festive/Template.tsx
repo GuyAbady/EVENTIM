@@ -1,10 +1,7 @@
-import { Rubik } from "next/font/google";
 import { getTranslations } from "next-intl/server";
 import { Countdown } from "../blocks/Countdown";
 import { ActionLinks, DateLine, VenueLine } from "../blocks/EventInfo";
 import type { TemplateProps } from "../types";
-
-const rubik = Rubik({ subsets: ["hebrew", "latin"], weight: ["400", "700", "900"], display: "swap" });
 
 const CONFETTI = ["#e63946", "#f4a261", "#2a9d8f", "#e9c46a", "#457b9d"];
 
@@ -14,7 +11,7 @@ export default async function FestiveTemplate({ event, locale, links, rsvp }: Te
   const accent = event.primary_color ?? "#e63946";
 
   return (
-    <div className={`${rubik.className} relative min-h-full overflow-hidden bg-[#fff4f0] text-[#3b1f1a]`}>
+    <div className={`relative min-h-full overflow-hidden bg-[#fff4f0] text-[#3b1f1a]`}>
       <svg aria-hidden className="pointer-events-none absolute inset-0 h-full w-full">
         {Array.from({ length: 40 }, (_, i) => (
           <rect

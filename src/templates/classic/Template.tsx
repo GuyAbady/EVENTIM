@@ -1,10 +1,7 @@
-import { Frank_Ruhl_Libre } from "next/font/google";
 import { getTranslations } from "next-intl/server";
 import { Countdown } from "../blocks/Countdown";
 import { ActionLinks, DateLine, VenueLine } from "../blocks/EventInfo";
 import type { TemplateProps } from "../types";
-
-const serif = Frank_Ruhl_Libre({ subsets: ["hebrew", "latin"], weight: ["400", "500", "700"], display: "swap" });
 
 // Classic: cream paper, serif, centred card with a thin gold rule.
 export default async function ClassicTemplate({ event, locale, links, rsvp }: TemplateProps) {
@@ -12,7 +9,7 @@ export default async function ClassicTemplate({ event, locale, links, rsvp }: Te
   const accent = event.primary_color ?? "#b08d57";
 
   return (
-    <div className={`${serif.className} min-h-full bg-[#f6f1e7] text-[#2b2420]`} style={{ ["--tpl-accent" as string]: accent }}>
+    <div className={`min-h-full bg-[#f6f1e7] text-[#2b2420]`} style={{ ["--tpl-accent" as string]: accent }}>
       <div className="mx-auto flex w-full max-w-xl flex-col gap-10 px-4 py-10 sm:py-16">
         <header className="flex flex-col items-center gap-5 text-center">
           {event.media_url && (

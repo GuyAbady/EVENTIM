@@ -1,10 +1,7 @@
-import { Frank_Ruhl_Libre } from "next/font/google";
 import { getTranslations } from "next-intl/server";
 import { Countdown } from "../blocks/Countdown";
 import { ActionLinks, DateLine, VenueLine } from "../blocks/EventInfo";
 import type { TemplateProps } from "../types";
-
-const serif = Frank_Ruhl_Libre({ subsets: ["hebrew", "latin"], weight: ["300", "400", "500"], display: "swap" });
 
 // Romantic: blush and mauve, light serif, arched photo, soft dividers.
 export default async function RomanticTemplate({ event, locale, links, rsvp }: TemplateProps) {
@@ -12,7 +9,7 @@ export default async function RomanticTemplate({ event, locale, links, rsvp }: T
   const accent = event.primary_color ?? "#9a6b7a";
 
   return (
-    <div className={`${serif.className} min-h-full bg-[#fbf6f3] text-[#3d2c2e]`}>
+    <div className={`min-h-full bg-[#fbf6f3] text-[#3d2c2e]`}>
       <div className="mx-auto flex w-full max-w-xl flex-col gap-10 px-4 py-14 sm:py-20">
         <header className="flex flex-col items-center gap-6 text-center">
           {event.media_url && (
