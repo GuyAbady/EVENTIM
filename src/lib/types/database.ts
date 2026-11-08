@@ -24,15 +24,17 @@ export type EventRow = {
   rsvp_deadline: string | null;
   max_guests: number | null;
   invitation_message: string | null;
+  show_launch_video: boolean;
   is_active: boolean;
   created_by: string | null;
   created_at: string;
   updated_at: string;
 };
 
-export type EventInsert = Omit<EventRow, "id" | "created_at" | "updated_at" | "reminder_sent_at" | "invitation_message"> & {
+export type EventInsert = Omit<EventRow, "id" | "created_at" | "updated_at" | "reminder_sent_at" | "invitation_message" | "show_launch_video"> & {
   id?: string;
   invitation_message?: string | null;
+  show_launch_video?: boolean;
 };
 export type EventUpdate = Partial<EventInsert & { reminder_sent_at: string | null }>;
 

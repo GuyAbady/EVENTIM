@@ -49,6 +49,7 @@ export function EventForm({
     rsvp_deadline_local: raw?.rsvp_deadline_local ?? isoToLocalInput(initial.rsvp_deadline ?? null),
     max_guests: raw?.max_guests ?? (initial.max_guests == null ? "" : String(initial.max_guests)),
     is_active: raw ? raw.is_active === "on" : (initial.is_active ?? true),
+    show_launch_video: raw ? raw.show_launch_video === "on" : (initial.show_launch_video ?? false),
   };
   const [title, setTitle] = useState(d.title);
   const err = (key: keyof typeof errors) => (errors[key] ? t(`errors.${errors[key]}` as never) : undefined);
@@ -169,6 +170,13 @@ export function EventForm({
         <label className="flex items-center gap-3 text-sm">
           <input type="checkbox" name="is_active" defaultChecked={d.is_active} className="size-4 accent-accent" />
           {t("isActive")}
+        </label>
+        <label className="flex items-start gap-3 text-sm">
+          <input type="checkbox" name="show_launch_video" defaultChecked={d.show_launch_video} className="mt-0.5 size-4 accent-accent" />
+          <span className="flex flex-col gap-0.5">
+            {t("showLaunchVideo")}
+            <span className="text-muted">{t("showLaunchVideoHelp")}</span>
+          </span>
         </label>
       </Section>
 

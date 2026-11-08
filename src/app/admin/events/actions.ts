@@ -15,7 +15,7 @@ export type EventFormState = { errors: EventFormErrors | null; raw?: Record<stri
 const RAW_FIELDS = [
   "title", "slug", "event_type", "description", "date_time_local", "venue_name", "address",
   "lat", "lng", "template_id", "media_url", "primary_color", "gift_link_url",
-  "reminder_offset_hours", "rsvp_deadline_local", "max_guests", "is_active",
+  "reminder_offset_hours", "rsvp_deadline_local", "max_guests", "is_active", "show_launch_video",
 ] as const;
 
 // Forms with a server action reset after submission, so on error we hand the
@@ -58,6 +58,7 @@ function toRow(values: EventFormValues, createdBy: string): EventInsert | { erro
     rsvp_deadline,
     max_guests: values.max_guests ?? null,
     is_active: values.is_active,
+    show_launch_video: values.show_launch_video,
     created_by: createdBy,
   };
 }

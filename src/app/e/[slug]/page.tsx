@@ -74,7 +74,9 @@ export default async function PublicEventPage({ params }: Props) {
     rsvp,
   });
 
-  // Below the invitation, after the RSVP: the EVENTIM launch video.
+  if (!event.show_launch_video) return invitation;
+
+  // Below the invitation, after the RSVP: the EVENTIM launch video (per-event switch, off by default).
   return (
     <>
       {invitation}
