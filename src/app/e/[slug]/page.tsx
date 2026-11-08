@@ -10,6 +10,7 @@ import { OG_SIZE } from "@/lib/og/render";
 import { getTemplate } from "@/templates/registry";
 import { renderTemplate } from "@/templates/components";
 import { RegistrationForm } from "./RegistrationForm";
+import { LaunchVideo } from "@/components/LaunchVideo";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -60,7 +61,8 @@ export default async function PublicEventPage({ params }: Props) {
       </p>
     );
 
-  return renderTemplate(event.template_id, {
+  const tv = await getTranslations("invite.video");
+  const invitation = renderTemplate(event.template_id, {
     event,
     locale,
     links: {
@@ -71,4 +73,17 @@ export default async function PublicEventPage({ params }: Props) {
     },
     rsvp,
   });
+
+  // Below the invitation, after the RSVP: the EVENTIM launch video.
+  return (
+    <>
+      {invitation}
+      <footer className="border-t border-border bg-stone-50 px-4 py-10">
+        <div className="mx-auto flex w-full max-w-xl flex-col items-center gap-4 text-center">
+          <p className="text-sm text-muted">{tv("madeWith")}</p>
+          <LaunchVideo src="/media/eventim-launch.mp4" poster="/media/eventim-launch.jpg" playLabel={tv("play")} title={tv("title")} />
+        </div>
+      </footer>
+    </>
+  );
 }

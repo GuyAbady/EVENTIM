@@ -194,7 +194,12 @@
     },
     "notFoundTitle": "Invitation not found",
     "notFoundBody": "The link is wrong or the event is no longer active.",
-    "shareSiteName": "Digital invitation"
+    "shareSiteName": "Digital invitation",
+    "video": {
+      "madeWith": "This invitation was made with EVENTIM",
+      "play": "Play the video",
+      "title": "EVENTIM introduction video"
+    }
   },
   "registrations": {
     "title": "Registrations",
